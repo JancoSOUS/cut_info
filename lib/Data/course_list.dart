@@ -8,7 +8,6 @@ List<String> _courses = [
 ];
 
 List<String> _years = <String>[
-  'Everyone',
   '1',
   '2',
   '3',

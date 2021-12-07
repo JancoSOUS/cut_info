@@ -22,6 +22,7 @@ class CreatePostDropdown extends StatefulWidget {
 /// This is the private State class that goes with CreatePostDropdown.
 class _DropDownStatefulWidgetState extends State<CreatePostDropdown> {
   List<String> courses = ["Everyone"] + getCourses();
+  List<String> years = ['Everyone'] + getYears();
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +82,7 @@ class _DropDownStatefulWidgetState extends State<CreatePostDropdown> {
                 _newPostYear = newValue!;
               });
             },
-            items: getYears().map<DropdownMenuItem<String>>((String value) {
+            items: years.map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Text(value),
