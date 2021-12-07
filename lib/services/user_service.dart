@@ -4,6 +4,11 @@ import 'package:flutter/material.dart';
 String? _year;
 String? _username;
 String? _userCourse;
+bool _isAdmin = false;
+
+getIsAdmin() {
+  return _isAdmin;
+}
 
 getUserYear() {
   return _year;
@@ -69,6 +74,11 @@ class UserService with ChangeNotifier {
     }
     _showUserProgress = false;
     notifyListeners();
+
+    if (_currentUser!.getProperty('studentNumber').toString().length == 6) {
+      _isAdmin = true;
+    }
+
     _year = _currentUser!.getProperty('year');
     _userCourse = _currentUser!.getProperty('course');
     _username = _currentUser!.getProperty('name');
@@ -114,6 +124,10 @@ class UserService with ChangeNotifier {
           _currentUser = BackendlessUser.fromJson(mapOfCurrentUser);
           notifyListeners();
 
+          if (_currentUser!.getProperty('studentNumber').toString().length ==
+              6) {
+            _isAdmin = true;
+          }
           _year = _currentUser!.getProperty('year');
           _userCourse = _currentUser!.getProperty('course');
           _username = _currentUser!.getProperty('name');

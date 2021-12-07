@@ -124,7 +124,7 @@ class _MainPageState extends State<MainPage> {
                           postText = postText.replaceAll("\n", " ");
                           if (postText.length > 100) {
                             postText = postText.substring(0, 100) +
-                                "\nOpen Post to read more!";
+                                "\n*...Open Post to read more!...*";
                           }
 
                           return PostCard(

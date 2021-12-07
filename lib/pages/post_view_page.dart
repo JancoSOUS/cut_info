@@ -1,6 +1,7 @@
 import 'package:cut_info/models/comment.dart';
 import 'package:cut_info/models/post.dart';
 import 'package:cut_info/services/helper_comment.dart';
+import 'package:cut_info/services/user_service.dart';
 import 'package:cut_info/widgets/comment_card.dart';
 import 'package:cut_info/widgets/create_comment_popup.dart';
 import 'package:flutter/material.dart';
@@ -45,13 +46,16 @@ class _PostViewState extends State<PostView> {
           backgroundColor: Colors.blue.shade700,
           title: Text('Post'),
           actions: <Widget>[
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.delete),
-              color: Colors.red,
-              splashColor: Colors.purple,
-              splashRadius: 50,
-              tooltip: 'Manage Posts',
+            Visibility(
+              visible: getIsAdmin(),
+              child: IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.delete),
+                color: Colors.red,
+                splashColor: Colors.purple,
+                splashRadius: 50,
+                tooltip: 'Manage Posts',
+              ),
             ),
             IconButton(
               icon: const Icon(Icons.comment),
