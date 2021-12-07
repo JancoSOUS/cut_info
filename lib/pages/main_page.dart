@@ -55,29 +55,32 @@ class _MainPageState extends State<MainPage> {
           //child:
 
           //),
-          IconButton(
-            icon: const Icon(Icons.add),
-            splashColor: Colors.purple,
-            splashRadius: 50,
-            tooltip: 'Make a post',
-            onPressed: () async {
-              await showDialog(
-                context: context,
-                builder: (context) {
-                  return CreatePostCard(
-                    postTitleController: postTitleController,
-                    postContentController: postContentController,
-                    //context: context,
-                  );
-                },
-              );
+          Visibility(
+            visible: getIsAdmin(),
+            child: IconButton(
+              icon: const Icon(Icons.add),
+              splashColor: Colors.purple,
+              splashRadius: 50,
+              tooltip: 'Make a post',
+              onPressed: () async {
+                await showDialog(
+                  context: context,
+                  builder: (context) {
+                    return CreatePostCard(
+                      postTitleController: postTitleController,
+                      postContentController: postContentController,
+                      //context: context,
+                    );
+                  },
+                );
 
-              recievePosts(context).then((value) {
-                setState(() {
-                  posts = value;
+                recievePosts(context).then((value) {
+                  setState(() {
+                    posts = value;
+                  });
                 });
-              });
-            },
+              },
+            ),
           ), //end add post
           IconButton(
               icon: Icon(Icons.refresh),

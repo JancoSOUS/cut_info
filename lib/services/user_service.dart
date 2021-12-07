@@ -77,7 +77,8 @@ class UserService with ChangeNotifier {
 
     if (_currentUser!.getProperty('studentNumber').toString().length == 6) {
       _isAdmin = true;
-    }
+    } else
+      _isAdmin = false;
 
     _year = _currentUser!.getProperty('year');
     _userCourse = _currentUser!.getProperty('course');
@@ -127,7 +128,8 @@ class UserService with ChangeNotifier {
           if (_currentUser!.getProperty('studentNumber').toString().length ==
               6) {
             _isAdmin = true;
-          }
+          } else
+            _isAdmin = false;
           _year = _currentUser!.getProperty('year');
           _userCourse = _currentUser!.getProperty('course');
           _username = _currentUser!.getProperty('name');

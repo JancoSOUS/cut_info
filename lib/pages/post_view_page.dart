@@ -1,5 +1,7 @@
+import 'package:backendless_sdk/backendless_sdk.dart';
 import 'package:cut_info/models/comment.dart';
 import 'package:cut_info/models/post.dart';
+import 'package:cut_info/routes/routes.dart';
 import 'package:cut_info/services/helper_comment.dart';
 import 'package:cut_info/services/user_service.dart';
 import 'package:cut_info/widgets/comment_card.dart';
@@ -41,6 +43,56 @@ class _PostViewState extends State<PostView> {
   @override
   Widget build(BuildContext context) {
     final post = ModalRoute.of(context)!.settings.arguments as Posts;
+
+    Future<void> deleteDialog() async {
+      return showDialog<void>(
+        context: context,
+        barrierDismissible: false, // user must tap button!
+        builder: (BuildContext context) {
+          return AlertDialog(
+            backgroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            title: Text('Are you sure you want to delete this post ?'),
+            actions: [
+              TextButton(
+                child: Text(
+                  'Cancel',
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              TextButton(
+                child: Text(
+                  'Delete',
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Map data = {
+                    'title': post.title,
+                    'content': post.content,
+                    'year': post.year,
+                    'hasImage': post.hasImage,
+                    'created': post.created,
+                    'objectId': post.objectId
+                  };
+
+                  Backendless.data.of("Everyone").remove(entity: data);
+                  Backendless.data.of(getUserCourse()).remove(entity: data);
+
+                  Navigator.popAndPushNamed(context, RouteManager.mainPage);
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue.shade700,
@@ -50,34 +102,13 @@ class _PostViewState extends State<PostView> {
               visible: getIsAdmin(),
               child: IconButton(
                 onPressed: () {
-                  AlertDialog(
-                    backgroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    title: Text('Are you sure you want to delete this post ?'),
-                    actions: [
-                      TextButton(
-                        child: Text(
-                          'Cancel',
-                          style: TextStyle(color: Colors.black, fontSize: 18),
-                        ),
-                        onPressed: () {},
-                      ),
-                      TextButton(
-                          child: Text(
-                            'Delete',
-                            style: TextStyle(color: Colors.black, fontSize: 18),
-                          ),
-                          onPressed: () {}),
-                    ],
-                  );
+                  deleteDialog();
                 },
                 icon: Icon(Icons.delete),
                 color: Colors.red,
                 splashColor: Colors.purple,
                 splashRadius: 50,
-                tooltip: 'Manage Posts',
+                tooltip: 'Delete Posts',
               ),
             ),
             IconButton(
