@@ -1,3 +1,4 @@
+import 'package:cut_info/Data/course_list.dart';
 import 'package:flutter/material.dart';
 
 String _newPostCourse = 'Everyone';
@@ -20,22 +21,7 @@ class CreatePostDropdown extends StatefulWidget {
 
 /// This is the private State class that goes with CreatePostDropdown.
 class _DropDownStatefulWidgetState extends State<CreatePostDropdown> {
-  List<String> courses = <String>[
-    'Everyone',
-    'IT',
-    'Marketing',
-    'Somatology',
-    'Mec Engineering',
-    'Ele Engineering',
-    'Hospitality'
-  ];
-
-  List<String> years = <String>[
-    'Everyone',
-    '1',
-    '2',
-    '3',
-  ];
+  List<String> courses = ["Everyone"] + getCourses();
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +81,7 @@ class _DropDownStatefulWidgetState extends State<CreatePostDropdown> {
                 _newPostYear = newValue!;
               });
             },
-            items: years.map<DropdownMenuItem<String>>((String value) {
+            items: getYears().map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Text(value),

@@ -1,3 +1,4 @@
+import 'package:cut_info/Data/course_list.dart';
 import 'package:flutter/material.dart';
 
 String dropdownCourse = 'IT';
@@ -16,19 +17,12 @@ class RegisterCourseDropDownWidget extends StatefulWidget {
 
 /// This is the private State class that goes with RegisterCourseDropDownWidget.
 class _DropDownStatefulWidgetState extends State<RegisterCourseDropDownWidget> {
-  List<String> courses = <String>[
-    'IT',
-    'Marketing',
-    'Somatology',
-    'Mec Engineering',
-    'Ele Engineering',
-    'Hospitality'
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        Text("Select Your course"),
         Container(
           width: 150,
           child: DropdownButton<String>(
@@ -50,7 +44,7 @@ class _DropDownStatefulWidgetState extends State<RegisterCourseDropDownWidget> {
                 dropdownCourse = newValue!;
               });
             },
-            items: courses.map<DropdownMenuItem<String>>((String value) {
+            items: getCourses().map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Text(

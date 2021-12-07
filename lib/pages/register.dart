@@ -134,13 +134,13 @@ class _RegisterState extends State<Register> {
                         validate: surnameValidate),
                     // Course drop down
                     Padding(
-                      padding: const EdgeInsets.only(left: 30),
+                      padding: const EdgeInsets.only(left: 30, right: 30),
                       child: RegisterCourseDropDownWidget(),
                     ),
                     //
                     // Year drop down
                     Padding(
-                        padding: const EdgeInsets.only(left: 30),
+                        padding: const EdgeInsets.only(left: 30, right: 30),
                         child: RegisterYearDropDownWidget()),
                     // drop downs end
                     //

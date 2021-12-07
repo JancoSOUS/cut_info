@@ -1,3 +1,4 @@
+import 'package:cut_info/Data/course_list.dart';
 import 'package:flutter/material.dart';
 
 String dropdownYear = '1';
@@ -16,17 +17,12 @@ class RegisterYearDropDownWidget extends StatefulWidget {
 
 /// This is the private State class that goes with RegisterYearDropDownWidget.
 class _DropDownStatefulWidgetState extends State<RegisterYearDropDownWidget> {
-  List<String> years = <String>[
-    '1',
-    '2',
-    '3',
-    '4',
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        Text("Select your year of study"),
         Container(
           width: 150,
           child: DropdownButton<String>(
@@ -45,7 +41,7 @@ class _DropDownStatefulWidgetState extends State<RegisterYearDropDownWidget> {
                 dropdownYear = newValue!;
               });
             },
-            items: years.map<DropdownMenuItem<String>>((String value) {
+            items: getYears().map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Text(value),
