@@ -53,13 +53,7 @@ class _MainPageState extends State<MainPage> {
           //Padding(
           //padding: const EdgeInsets.only(right: 100),
           //child:
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.manage_accounts),
-            splashColor: Colors.purple,
-            splashRadius: 50,
-            tooltip: 'Manage Posts',
-          ),
+
           //),
           IconButton(
             icon: const Icon(Icons.add),
@@ -124,7 +118,7 @@ class _MainPageState extends State<MainPage> {
                           postText = postText.replaceAll("\n", " ");
                           if (postText.length > 100) {
                             postText = postText.substring(0, 100) +
-                                "\n*...Open Post to read more!...*";
+                                "\nOpen Post to read more!";
                           }
 
                           return PostCard(

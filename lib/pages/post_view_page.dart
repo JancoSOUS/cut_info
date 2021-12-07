@@ -49,7 +49,30 @@ class _PostViewState extends State<PostView> {
             Visibility(
               visible: getIsAdmin(),
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  AlertDialog(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    title: Text('Are you sure you want to delete this post ?'),
+                    actions: [
+                      TextButton(
+                        child: Text(
+                          'Cancel',
+                          style: TextStyle(color: Colors.black, fontSize: 18),
+                        ),
+                        onPressed: () {},
+                      ),
+                      TextButton(
+                          child: Text(
+                            'Delete',
+                            style: TextStyle(color: Colors.black, fontSize: 18),
+                          ),
+                          onPressed: () {}),
+                    ],
+                  );
+                },
                 icon: Icon(Icons.delete),
                 color: Colors.red,
                 splashColor: Colors.purple,
