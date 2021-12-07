@@ -5,6 +5,7 @@ import 'package:cut_info/models/post.dart';
 import 'package:cut_info/services/user_service.dart';
 import 'package:cut_info/widgets/app_progress_indicator.dart';
 import 'package:cut_info/widgets/create_post_dropdown.dart';
+import 'package:cut_info/widgets/snackbar.dart';
 import 'package:flutter/material.dart';
 
 Future<void> submitPost(TextEditingController postTitleController,
@@ -28,7 +29,7 @@ Future<void> submitPost(TextEditingController postTitleController,
   await Backendless.data.of(getNewPostCourse()).save(data);
 }
 
-Future<List<Posts>> recievePosts() async {
+Future<List<Posts>> recievePosts(context) async {
   sleep(Duration(microseconds: 200));
   List<Posts> posts = List.empty(growable: true);
   DataQueryBuilder queryBuilder = DataQueryBuilder()..pageSize = 100;
@@ -46,6 +47,8 @@ Future<List<Posts>> recievePosts() async {
         posts.add(post);
       }
     });
+  }).onError((error, stackTrace) {
+    showSnackBar(context, "Database Everyone is not found");
   });
 
   await Backendless.data
@@ -64,6 +67,8 @@ Future<List<Posts>> recievePosts() async {
         posts.add(post);
       }
     });
+  }).onError((error, stackTrace) {
+    showSnackBar(context, "Database $getUserCourse() is not found");
   });
 
   posts.sort((a, b) => b.created.compareTo(a.created));

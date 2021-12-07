@@ -88,6 +88,6 @@ class CreatePostCard extends StatelessWidget {
         ),
       ],
     );
-    return alertDialog;
+    return Scaffold(body: alertDialog);
   }
 }

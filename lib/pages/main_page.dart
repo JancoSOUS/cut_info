@@ -29,7 +29,7 @@ class _MainPageState extends State<MainPage> {
     postTitleController = TextEditingController();
     postContentController = TextEditingController();
 
-    recievePosts().then((value) {
+    recievePosts(context).then((value) {
       setState(() {
         posts = value;
       });
@@ -78,7 +78,7 @@ class _MainPageState extends State<MainPage> {
                 },
               );
 
-              recievePosts().then((value) {
+              recievePosts(context).then((value) {
                 setState(() {
                   posts = value;
                 });
@@ -91,7 +91,7 @@ class _MainPageState extends State<MainPage> {
               splashRadius: 50,
               tooltip: 'Refresh',
               onPressed: () {
-                recievePosts().then((value) {
+                recievePosts(context).then((value) {
                   setState(() {
                     posts = value;
                   });
