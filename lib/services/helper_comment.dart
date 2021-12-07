@@ -28,10 +28,8 @@ Future<List<Comment>> recieveComments(String? objectID) async {
 }
 
 Future<void> submitComment(String commentContent, String postID) async {
-  String userName = getUsername();
-
   Comment newComment =
-      new Comment(commentContent, DateTime.now(), userName, postID);
+      new Comment(commentContent, DateTime.now(), getUserUsername(), postID);
 
   Map data = {
     'comment': newComment.comment,

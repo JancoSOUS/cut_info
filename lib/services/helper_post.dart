@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:backendless_sdk/backendless_sdk.dart';
 import 'package:cut_info/models/post.dart';
+import 'package:cut_info/services/user_service.dart';
 import 'package:cut_info/widgets/app_progress_indicator.dart';
 import 'package:cut_info/widgets/create_post_dropdown.dart';
 import 'package:flutter/material.dart';
@@ -34,17 +35,38 @@ Future<List<Posts>> recievePosts() async {
 
   await Backendless.data.of("Everyone").find(queryBuilder).then((tablePosts) {
     tablePosts!.forEach((element) {
-      Posts post = new Posts(
-          element?["title"],
-          element?["content"],
-          element?["year"],
-          element?["hasImage"],
-          element?["created"],
-          element?["objectId"]);
-      posts.add(post);
+      if (element?["year"] == "Everyone" || element?["year"] == getUserYear()) {
+        Posts post = new Posts(
+            element?["title"],
+            element?["content"],
+            element?["year"],
+            element?["hasImage"],
+            element?["created"],
+            element?["objectId"]);
+        posts.add(post);
+      }
     });
-    posts.sort((a, b) => b.created.compareTo(a.created));
   });
+
+  await Backendless.data
+      .of(getUserCourse())
+      .find(queryBuilder)
+      .then((tablePosts) {
+    tablePosts!.forEach((element) {
+      if (element?["year"] == "Everyone" || element?["year"] == getUserYear()) {
+        Posts post = new Posts(
+            element?["title"],
+            element?["content"],
+            element?["year"],
+            element?["hasImage"],
+            element?["created"],
+            element?["objectId"]);
+        posts.add(post);
+      }
+    });
+  });
+
+  posts.sort((a, b) => b.created.compareTo(a.created));
 
   return posts;
 }
