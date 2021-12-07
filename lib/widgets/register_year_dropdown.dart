@@ -24,7 +24,7 @@ class _DropDownStatefulWidgetState extends State<RegisterYearDropDownWidget> {
       children: [
         Text("Select your year of study"),
         Container(
-          width: 150,
+          width: 75,
           child: DropdownButton<String>(
             isExpanded: true,
             value: dropdownYear,
