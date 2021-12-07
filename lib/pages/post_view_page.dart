@@ -46,6 +46,14 @@ class _PostViewState extends State<PostView> {
           title: Text('Post'),
           actions: <Widget>[
             IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.delete),
+              color: Colors.red,
+              splashColor: Colors.purple,
+              splashRadius: 50,
+              tooltip: 'Manage Posts',
+            ),
+            IconButton(
               icon: const Icon(Icons.comment),
               tooltip: 'Make a comment',
               onPressed: () async {
