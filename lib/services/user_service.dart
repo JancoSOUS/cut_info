@@ -75,14 +75,16 @@ class UserService with ChangeNotifier {
     _showUserProgress = false;
     notifyListeners();
 
-    if (_currentUser!.getProperty('studentNumber').toString().length == 6) {
-      _isAdmin = true;
-    } else
-      _isAdmin = false;
+    if (result == "OK") {
+      if (_currentUser!.getProperty('studentNumber').toString().length == 6) {
+        _isAdmin = true;
+      } else
+        _isAdmin = false;
+      _year = _currentUser!.getProperty('year');
+      _userCourse = _currentUser!.getProperty('course');
+      _username = _currentUser!.getProperty('name');
+    }
 
-    _year = _currentUser!.getProperty('year');
-    _userCourse = _currentUser!.getProperty('course');
-    _username = _currentUser!.getProperty('name');
     return result;
   }
 
@@ -125,14 +127,16 @@ class UserService with ChangeNotifier {
           _currentUser = BackendlessUser.fromJson(mapOfCurrentUser);
           notifyListeners();
 
-          if (_currentUser!.getProperty('studentNumber').toString().length ==
-              6) {
-            _isAdmin = true;
-          } else
-            _isAdmin = false;
-          _year = _currentUser!.getProperty('year');
-          _userCourse = _currentUser!.getProperty('course');
-          _username = _currentUser!.getProperty('name');
+          if (result == "OK") {
+            if (_currentUser!.getProperty('studentNumber').toString().length ==
+                6) {
+              _isAdmin = true;
+            } else
+              _isAdmin = false;
+            _year = _currentUser!.getProperty('year');
+            _userCourse = _currentUser!.getProperty('course');
+            _username = _currentUser!.getProperty('name');
+          }
         } else {
           result = 'NOT OK';
         }
