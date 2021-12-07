@@ -28,8 +28,9 @@ class CreatePostCard extends StatelessWidget {
       ),
       title: Text('Create a new Post'),
       content: Column(
-        mainAxisSize: MainAxisSize.max,
+        //mainAxisSize: MainAxisSize.max,
         children: [
+          CreatePostDropdown(),
           TextField(
             maxLength: 40,
             keyboardType: TextInputType.text,
@@ -37,24 +38,22 @@ class CreatePostCard extends StatelessWidget {
             decoration: const InputDecoration(
                 border: OutlineInputBorder(), hintText: 'Enter Post Title.'),
           ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Container(
-                width: 320,
-                child: TextField(
-                  keyboardType: TextInputType.multiline,
-                  maxLines: 40,
-                  controller: postContentController,
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Enter Post content.'),
-                ),
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.90,
+              child: TextField(
+                keyboardType: TextInputType.multiline,
+                maxLines: 40,
+                controller: postContentController,
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Enter Post content.'),
               ),
             ),
-          ),
-          CreatePostDropdown()
+          )
         ],
+        //),
       ),
       actions: [
         TextButton(
@@ -88,6 +87,8 @@ class CreatePostCard extends StatelessWidget {
         ),
       ],
     );
-    return Scaffold(body: alertDialog);
+    return Scaffold(
+        backgroundColor: Colors.lightBlue,
+        body: SingleChildScrollView(child: alertDialog));
   }
 }

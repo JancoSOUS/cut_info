@@ -27,25 +27,22 @@ class CommentPopup extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       title: Text('Create a new Comment'),
-      content: Column(
-        children: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Container(
-                width: 300,
-                child: TextField(
-                  keyboardType: TextInputType.multiline,
-                  maxLines: 15,
-                  controller: commentContentController,
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Enter comment content.'),
-                ),
+      content: Container(
+        child: Column(
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width * 0.90,
+              child: TextField(
+                keyboardType: TextInputType.multiline,
+                maxLines: 15,
+                controller: commentContentController,
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Enter comment content.'),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       actions: [
         TextButton(
@@ -75,6 +72,8 @@ class CommentPopup extends StatelessWidget {
         ),
       ],
     );
-    return Scaffold(backgroundColor: Colors.lightBlue, body: commentDialog);
+    return Scaffold(
+        backgroundColor: Colors.lightBlue,
+        body: Center(child: SingleChildScrollView(child: commentDialog)));
   }
 }
