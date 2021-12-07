@@ -53,7 +53,7 @@ class CreatePostCard extends StatelessWidget {
               ),
             ),
           ),
-          DropDownWidget()
+          CreatePostDropdown()
         ],
       ),
       actions: [

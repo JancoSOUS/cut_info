@@ -1,18 +1,27 @@
 import 'package:flutter/material.dart';
 
-class DropDownWidget extends StatefulWidget {
-  const DropDownWidget({Key? key}) : super(key: key);
+String _newPostCourse = 'Everyone';
+String _newPostYear = 'Everyone';
 
-  @override
-  State<DropDownWidget> createState() => _DropDownStatefulWidgetState();
+String getNewPostCourse() {
+  return _newPostCourse;
 }
 
-/// This is the private State class that goes with DropDownWidget.
-class _DropDownStatefulWidgetState extends State<DropDownWidget> {
-  String dropdownValue = 'IT';
-  String dropdownValue2 = 'Everyone';
+String getNewPostYear() {
+  return _newPostYear;
+}
 
+class CreatePostDropdown extends StatefulWidget {
+  const CreatePostDropdown({Key? key}) : super(key: key);
+
+  @override
+  State<CreatePostDropdown> createState() => _DropDownStatefulWidgetState();
+}
+
+/// This is the private State class that goes with CreatePostDropdown.
+class _DropDownStatefulWidgetState extends State<CreatePostDropdown> {
   List<String> courses = <String>[
+    'Everyone',
     'IT',
     'Marketing',
     'Somatology',
@@ -36,7 +45,7 @@ class _DropDownStatefulWidgetState extends State<DropDownWidget> {
         Container(
           width: 120,
           child: DropdownButton<String>(
-            value: dropdownValue,
+            value: _newPostCourse,
             icon: const Icon(
               Icons.arrow_downward,
               color: Colors.black,
@@ -50,7 +59,7 @@ class _DropDownStatefulWidgetState extends State<DropDownWidget> {
             ),
             onChanged: (String? newValue) {
               setState(() {
-                dropdownValue = newValue!;
+                _newPostCourse = newValue!;
               });
             },
             items: courses.map<DropdownMenuItem<String>>((String value) {
@@ -69,7 +78,7 @@ class _DropDownStatefulWidgetState extends State<DropDownWidget> {
         Container(
           width: 120,
           child: DropdownButton<String>(
-            value: dropdownValue2,
+            value: _newPostYear,
             icon: const Icon(
               Icons.arrow_downward,
               color: Colors.black,
@@ -83,7 +92,7 @@ class _DropDownStatefulWidgetState extends State<DropDownWidget> {
             ),
             onChanged: (String? newValue) {
               setState(() {
-                dropdownValue2 = newValue!;
+                _newPostYear = newValue!;
               });
             },
             items: years.map<DropdownMenuItem<String>>((String value) {

@@ -37,8 +37,8 @@ class PostCard extends StatelessWidget {
                 objectID: objectId,
               ),
               settings: RouteSettings(
-                arguments:
-                    Posts(postTitle, fullPostText, false, dateTime, objectId),
+                arguments: Posts(
+                    postTitle, fullPostText, "", false, dateTime, objectId),
               ),
             ),
           );
