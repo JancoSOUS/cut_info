@@ -11,21 +11,22 @@ Future<List<Comment>> recieveComments(String? objectID) async {
     ..whereClause = "postID = '$objectID'"
     ..pageSize = 100;
 
-  await Backendless.data
-      .of("Comments")
-      .find(queryBuilder)
-      .then((tableComments) {
-    tableComments!.forEach((element) {
-      Comment comment = new Comment(element?["comment"], element?["created"],
-          element?["user"], element?["postID"]);
-      comments.add(comment);
-    });
+  await Backendless.data.of("Comments").find(queryBuilder).then(
+    (tableComments) {
+      tableComments!.forEach(
+        (element) {
+          Comment comment = new Comment(element?["comment"],
+              element?["created"], element?["user"], element?["postID"]);
+          comments.add(comment);
+        },
+      );
 
-    comments.sort((a, b) => b.created.compareTo(a.created));
-  });
+      comments.sort((a, b) => b.created.compareTo(a.created));
+    },
+  );
 
   return comments;
-}
+} // end recieveComments()
 
 Future<void> submitComment(String commentContent, String postID) async {
   Comment newComment =
@@ -39,4 +40,4 @@ Future<void> submitComment(String commentContent, String postID) async {
   };
 
   await Backendless.data.of("Comments").save(data);
-}
+}// end submitComment()

@@ -25,7 +25,6 @@ class CreatePostCard extends StatelessWidget {
       ),
       title: Text('Create a new Post'),
       content: Column(
-        //mainAxisSize: MainAxisSize.max,
         children: [
           CreatePostDropdown(),
           TextField(

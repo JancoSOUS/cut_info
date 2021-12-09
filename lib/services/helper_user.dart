@@ -30,82 +30,94 @@ void createNewUserInUI(
       context,
       'Please enter all fields!',
     );
-  } else if (password.length < 6) {
+  } // end if
+  else if (password.length < 6) {
     showSnackBar(
       context,
       'Password must be atlest 6 characters!',
     );
-  } else if (!password.contains(RegExp(r'[A-Z]'))) {
+  } // end else if
+  else if (!password.contains(RegExp(r'[A-Z]'))) {
     showSnackBar(context, 'Password must contain a capital letter!');
-  } else if (!password.contains(RegExp(r'[0-9]'))) {
+  } // end else if
+  else if (!password.contains(RegExp(r'[0-9]'))) {
     showSnackBar(context, 'Password must contain a number!');
-  } else if (password != passwordConfirm) {
+  } // end else if
+  else if (password != passwordConfirm) {
     showSnackBar(
       context,
       'Password and Confirm password does not match!',
     );
-  } else {
+  } // end else if
+  else {
     BackendlessUser user = BackendlessUser()
       ..email = email.trim()
       ..password = password.trim()
-      ..putProperties({
-        'name': name.trim(),
-        'studentNumber': studentNumber.trim(),
-        'surname': surname.trim(),
-        'course': course.trim(),
-        'year': year.trim()
-      });
+      ..putProperties(
+        {
+          'name': name.trim(),
+          'studentNumber': studentNumber.trim(),
+          'surname': surname.trim(),
+          'course': course.trim(),
+          'year': year.trim()
+        },
+      );
 
     String result = await context.read<UserService>().createUser(user);
     if (result != 'OK') {
       showSnackBar(context, result);
-    } else {
+    } // end if
+    else {
       showSnackBar(context, 'New user successfully created!');
       Navigator.pop(context);
-    }
-  }
-}
+    } // end else
+  } // end else
+} // end createNewUserInUI()
 
 void loginUserInUI(BuildContext context,
     {required String email, required String password}) async {
   FocusManager.instance.primaryFocus?.unfocus();
   if (email.isEmpty || password.isEmpty) {
     showSnackBar(context, 'Please enter both fields!');
-  } else {
+  } // end if
+  else {
     String result = await context
         .read<UserService>()
         .loginUser(email.trim(), password.trim());
     if (result != 'OK') {
       showSnackBar(context, result);
-    } else {
-      //context.read<TodoService>().getTodos(email);
+    } // end if
+    else {
       Navigator.of(context).popAndPushNamed(RouteManager.mainPage);
-    }
-  }
-}
+    } // end else
+  } // end else
+} // end loginUserInUI()
 
 void resetPasswordInUI(BuildContext context, {required String email}) async {
   if (email.isEmpty) {
     showSnackBar(context,
         'Please enter your email address then click on Reset Password again!');
-  } else {
+  } // end if
+  else {
     String result =
         await context.read<UserService>().resetPassword(email.trim());
     if (result == 'OK') {
       showSnackBar(
           context, 'Successfully sent password reset. Please check your mail');
-    } else {
+    } // end id
+    else {
       showSnackBar(context, result);
-    }
-  }
-}
+    } // end else
+  } // end else
+} // end resetPasswordInUI()
 
 void logoutUserInUI(BuildContext context) async {
   String result = await context.read<UserService>().logoutUser();
   if (result == 'OK') {
     context.read<UserService>().setCurrentUserNull();
     Navigator.popAndPushNamed(context, RouteManager.loginPage);
-  } else {
+  } // end if
+  else {
     showSnackBar(context, result);
-  }
-}
+  } // end else
+} // end logoutUserInUI()

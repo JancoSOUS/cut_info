@@ -16,9 +16,6 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => UserService(),
         ),
-        // ChangeNotifierProvider(
-        //   create: (context) => TodoService(),
-        // )
       ],
       child: LifeCycle(
         child: MaterialApp(
@@ -28,5 +25,5 @@ class MyApp extends StatelessWidget {
         ),
       ),
     );
-  }
-}
+  } // end Widget build
+}// end MyApp class

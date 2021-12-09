@@ -40,9 +40,11 @@ class _DropDownStatefulWidgetState extends State<RegisterCourseDropDownWidget> {
               color: Colors.grey,
             ),
             onChanged: (String? newValue) {
-              setState(() {
-                dropdownCourse = newValue!;
-              });
+              setState(
+                () {
+                  dropdownCourse = newValue!;
+                },
+              );
             },
             items: getCourses().map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(

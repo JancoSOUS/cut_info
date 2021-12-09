@@ -43,6 +43,6 @@ class RouteManager {
 
       default:
         throw FormatException('Route not found! Check routes again!');
-    }
-  }
-}
+    } // end switch
+  } // end generateRoute()
+}// end RouteManager class

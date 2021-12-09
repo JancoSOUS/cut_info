@@ -13,7 +13,7 @@ class RegisterYearDropDownWidget extends StatefulWidget {
   @override
   State<RegisterYearDropDownWidget> createState() =>
       _DropDownStatefulWidgetState();
-}
+} // end RegisterYearDropDownWidget class
 
 /// This is the private State class that goes with RegisterYearDropDownWidget.
 class _DropDownStatefulWidgetState extends State<RegisterYearDropDownWidget> {
@@ -37,16 +37,20 @@ class _DropDownStatefulWidgetState extends State<RegisterYearDropDownWidget> {
             style: TextStyle(color: Colors.black),
             underline: Container(height: 3, color: Colors.grey),
             onChanged: (String? newValue) {
-              setState(() {
-                dropdownYear = newValue!;
-              });
-            },
-            items: getYears().map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
+              setState(
+                () {
+                  dropdownYear = newValue!;
+                },
               );
-            }).toList(),
+            },
+            items: getYears().map<DropdownMenuItem<String>>(
+              (String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              },
+            ).toList(),
           ),
         ),
       ],

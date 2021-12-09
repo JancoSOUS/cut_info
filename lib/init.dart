@@ -16,13 +16,11 @@ class InitApp {
         androidApiKey: androidApiKey);
     String result = await context.read<UserService>().checkIfUserLoggedIn();
     if (result == 'OK') {
-      //context
-      //.read<TodoService>()
-      //.getTodos(context.read<UserService>().currentUser!.email);
       Navigator.pushNamedAndRemoveUntil(
           context, RouteManager.mainPage, (route) => false);
-    } else {
+    } // end if
+    else {
       Navigator.popAndPushNamed(context, RouteManager.loginPage);
-    }
-  }
-}
+    } // end else
+  } // end initializeApp()
+}// end InitApp class

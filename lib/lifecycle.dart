@@ -9,20 +9,20 @@ class LifeCycle extends StatefulWidget {
 
   @override
   _LifeCycleState createState() => _LifeCycleState();
-}
+} // end LifeCycle class
 
 class _LifeCycleState extends State<LifeCycle> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance!.addObserver(this);
-  }
+  } // end initState()
 
   @override
   void dispose() {
     WidgetsBinding.instance!.removeObserver(this);
     super.dispose();
-  }
+  } // end dispose()
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) async {
@@ -30,31 +30,28 @@ class _LifeCycleState extends State<LifeCycle> with WidgetsBindingObserver {
     if (check == UIState.CHANGED &&
         state == AppLifecycleState.inactive &&
         context.read<UserService>().currentUser != null) {
-      // await context
-      //     .read<TodoService>()
-      //     .saveTodoEntry(context.read<UserService>().currentUser!.email, false);
       setUIStateFlag(UIState.NO_CHANGE);
-    }
-  }
+    } // end if
+  } // end didChangeAppLifecycleState()
 
   @override
   Widget build(BuildContext context) {
     return widget.child;
-  }
-}
+  } // end build
+} // end  _LifeCycleState class
 
 enum UIState {
   CHANGED,
   NO_CHANGE,
-}
+} // end UIState enum
 
 void setUIStateFlag(UIState state) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   prefs.setInt('uistate', state == UIState.CHANGED ? 1 : 0);
-}
+} // end setUIStateFlag()
 
 Future<UIState> getUIStateFlag() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   int check = prefs.getInt('uistate') ?? 0;
   return check == 1 ? UIState.CHANGED : UIState.NO_CHANGE;
-}
+}// end getUIStateFlag()
