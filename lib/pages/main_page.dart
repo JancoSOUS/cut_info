@@ -5,7 +5,6 @@ import 'package:cut_info/services/user_service.dart';
 import 'package:cut_info/widgets/app_progress_indicator.dart';
 import 'package:cut_info/widgets/create_post_card_alert_dialog.dart';
 import 'package:cut_info/widgets/post_card.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tuple/tuple.dart';

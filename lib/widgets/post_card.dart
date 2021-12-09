@@ -1,9 +1,7 @@
 import 'package:cut_info/models/post.dart';
 import 'package:cut_info/pages/post_view_page.dart';
 import 'package:cut_info/services/user_service.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PostCard extends StatelessWidget {
