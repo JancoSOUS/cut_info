@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 bool getvalidate(bool validate) {
   return validate;
-}
+} //End getvalidate()
 
 class AppTextField extends StatelessWidget {
   const AppTextField({
@@ -50,5 +50,5 @@ class AppTextField extends StatelessWidget {
         ),
       ),
     );
-  }
-}
+  } //End Widget
+} //End class

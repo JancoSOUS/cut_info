@@ -14,5 +14,5 @@ class Posts {
     this.hasImage = hasImage;
     this.created = created;
     this.objectId = objectId;
-  }
-}
+  } //end Posts
+}//end class

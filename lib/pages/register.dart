@@ -15,7 +15,7 @@ class Register extends StatefulWidget {
 
   @override
   _RegisterState createState() => _RegisterState();
-}
+} //End class
 
 class _RegisterState extends State<Register> {
   late TextEditingController emailController;
@@ -45,7 +45,7 @@ class _RegisterState extends State<Register> {
     yearController = TextEditingController();
     passwordController = TextEditingController();
     passwordConfirmController = TextEditingController();
-  }
+  } //End initState()
 
   @override
   void dispose() {
@@ -58,7 +58,7 @@ class _RegisterState extends State<Register> {
     yearController.dispose();
     passwordConfirmController.dispose();
     super.dispose();
-  }
+  } //End dispose()
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +76,7 @@ class _RegisterState extends State<Register> {
                       padding: const EdgeInsets.only(top: 40, bottom: 10),
                       child: Image(
                         image: AssetImage('assets/logo.png'),
-                      ),
+                      ), // end image asset
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 30.0),
@@ -93,8 +93,8 @@ class _RegisterState extends State<Register> {
                         if (!value) {
                           context.read<UserService>().checkIfUserExists(
                               studentNumberController.text.trim());
-                        }
-                      },
+                        } // end if
+                      }, // end onFocusChange
                       child: AppTextField(
                         keyboardType: TextInputType.text,
                         controller: emailController,
@@ -114,24 +114,25 @@ class _RegisterState extends State<Register> {
                                 ),
                               )
                             : Container();
-                      },
+                      }, // End Builder
                     ),
                     AppTextField(
                       keyboardType: TextInputType.number,
                       controller: studentNumberController,
                       labelText: 'Please enter your Student Number',
                       validate: studentNumberValidate,
-                    ),
+                    ), // end Student Number Text field
                     AppTextField(
                         keyboardType: TextInputType.text,
                         controller: nameController,
                         labelText: 'Please enter your name',
-                        validate: nameValidate),
+                        validate: nameValidate), // end Name Text field
                     AppTextField(
                         keyboardType: TextInputType.text,
                         controller: surnameController,
                         labelText: 'Please enter your surname',
-                        validate: surnameValidate),
+                        validate: surnameValidate), // end surname Text field
+                    //
                     // Course drop down
                     Padding(
                       padding: const EdgeInsets.only(left: 30, right: 30),
@@ -149,7 +150,7 @@ class _RegisterState extends State<Register> {
                         keyboardType: TextInputType.text,
                         controller: passwordController,
                         labelText: 'Please enter your password',
-                        validate: passwordlValidate),
+                        validate: passwordlValidate), //End password text field
                     // password validator in the UI
                     new FlutterPwValidator(
                       width: 300,
@@ -162,14 +163,15 @@ class _RegisterState extends State<Register> {
                       controller: passwordController,
                       onSuccess: () {
                         showSnackBar(context, 'Password Validated');
-                      },
+                      }, //End onPressed
                     ), // validator end
                     AppTextField(
                         hideText: true,
                         keyboardType: TextInputType.text,
                         controller: passwordConfirmController,
                         labelText: 'Please Confirm your password',
-                        validate: passwordConfirmValidate),
+                        validate:
+                            passwordConfirmValidate), //End confirm password text field
                     Padding(
                       padding: const EdgeInsets.only(top: 8.0),
                       child: ElevatedButton(
@@ -178,23 +180,23 @@ class _RegisterState extends State<Register> {
                           setState(() {
                             if (emailController.text.isEmpty) {
                               emailValidate = true;
-                            }
+                            } //End if
                             if (studentNumberController.text.isEmpty) {
                               studentNumberValidate = true;
-                            }
+                            } //End if
                             if (nameController.text.isEmpty) {
                               nameValidate = true;
-                            }
+                            } //End if
                             if (surnameController.text.isEmpty) {
                               surnameValidate = true;
-                            }
+                            } //End if
                             if (passwordController.text.isEmpty) {
                               passwordlValidate = true;
-                            }
+                            } //End if
                             if (passwordConfirmController.text.isEmpty) {
                               passwordConfirmValidate = true;
-                            }
-                          });
+                            } //End if
+                          }); //End onPressed: ()
                           createNewUserInUI(
                             context,
                             email: emailController.text.trim(),
@@ -208,7 +210,7 @@ class _RegisterState extends State<Register> {
                           );
                         },
                         child: Text('Register'),
-                      ),
+                      ), //End elevatedButton
                     ),
                   ],
                 ),
@@ -228,7 +230,8 @@ class _RegisterState extends State<Register> {
                 color: Colors.white,
               ),
             ),
-          ),
+          ), //End back button
+          //
           Selector<UserService, Tuple2>(
             selector: (context, value) =>
                 Tuple2(value.showUserProgress, value.userProgressText),
@@ -236,10 +239,10 @@ class _RegisterState extends State<Register> {
               return value.item1
                   ? AppProgressIndicator(text: '${value.item2}')
                   : Container();
-            },
+            }, //End Builder
           ),
         ],
       ),
     );
-  }
-}
+  } //End Widget
+} //End class

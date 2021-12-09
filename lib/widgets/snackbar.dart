@@ -12,6 +12,6 @@ void showSnackBar(BuildContext context, String message) {
     ),
     backgroundColor: Colors.purple,
     content: Text(message),
-  );
+  ); //End snackbar
   ScaffoldMessenger.of(context).showSnackBar(snackBar);
-}
+}//End showSnackBar

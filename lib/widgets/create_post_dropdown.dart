@@ -6,18 +6,18 @@ String _newPostYear = 'Everyone';
 
 String getNewPostCourse() {
   return _newPostCourse;
-}
+} //End getNewPostCourse()
 
 String getNewPostYear() {
   return _newPostYear;
-}
+} //End getNewPostYear()
 
 class CreatePostDropdown extends StatefulWidget {
   const CreatePostDropdown({Key? key}) : super(key: key);
 
   @override
   State<CreatePostDropdown> createState() => _DropDownStatefulWidgetState();
-}
+} //End class
 
 /// This is the private State class that goes with CreatePostDropdown.
 class _DropDownStatefulWidgetState extends State<CreatePostDropdown> {
@@ -35,6 +35,9 @@ class _DropDownStatefulWidgetState extends State<CreatePostDropdown> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            //
+            // Drop down 1 start
+            //
             Container(
               width: 120,
               child: DropdownButton<String>(
@@ -54,7 +57,7 @@ class _DropDownStatefulWidgetState extends State<CreatePostDropdown> {
                   setState(() {
                     _newPostCourse = newValue!;
                   });
-                },
+                }, //End onChanged
                 items: courses.map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
@@ -68,6 +71,9 @@ class _DropDownStatefulWidgetState extends State<CreatePostDropdown> {
 /* ...................................
 ................   drop down 1 end 
 ...................................... */
+            //
+            //dropdown 2 start
+            //
             Container(
               width: 80,
               child: DropdownButton<String>(
@@ -87,7 +93,7 @@ class _DropDownStatefulWidgetState extends State<CreatePostDropdown> {
                   setState(() {
                     _newPostYear = newValue!;
                   });
-                },
+                }, //End onChanged
                 items: years.map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
@@ -96,9 +102,12 @@ class _DropDownStatefulWidgetState extends State<CreatePostDropdown> {
                 }).toList(),
               ),
             ),
+            //
+            //dropdown 2 End#
+            //
           ],
         ),
       ],
     );
-  }
-}
+  } //End Widget
+} //End class

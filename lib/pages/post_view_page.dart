@@ -15,7 +15,7 @@ class PostView extends StatefulWidget {
 
   @override
   State<PostView> createState() => _PostViewState();
-}
+} //End class
 
 class _PostViewState extends State<PostView> {
   late TextEditingController postCommentController;
@@ -32,13 +32,13 @@ class _PostViewState extends State<PostView> {
         comments = value;
       });
     });
-  }
+  } //End initState()
 
   @override
   void dispose() {
     postCommentController.dispose();
     super.dispose();
-  }
+  } //End dispose()
 
   @override
   Widget build(BuildContext context) {
@@ -64,12 +64,12 @@ class _PostViewState extends State<PostView> {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-              ),
+              ), //End cancel button
               TextButton(
                 child: Text(
                   'Delete',
                   style: TextStyle(color: Colors.black, fontSize: 18),
-                ),
+                ), //End delete button
                 onPressed: () {
                   Navigator.of(context).pop();
                   Map data = {
@@ -79,16 +79,17 @@ class _PostViewState extends State<PostView> {
                     'hasImage': post.hasImage,
                     'created': post.created,
                     'objectId': post.objectId
-                  };
+                  }; //End map
 
                   Backendless.data.of("Everyone").remove(entity: data);
+
                   Backendless.data.of(getUserCourse()).remove(entity: data);
 
                   Navigator.popAndPushNamed(context, RouteManager.mainPage);
-                },
+                }, //End onPressed: ()
               ),
             ],
-          );
+          ); //end AlertDialog for post delete
         },
       );
     }
@@ -109,7 +110,7 @@ class _PostViewState extends State<PostView> {
                 splashColor: Colors.purple,
                 splashRadius: 50,
                 tooltip: 'Delete Posts',
-              ),
+              ), //End delete button
             ),
             IconButton(
               icon: const Icon(Icons.comment),
@@ -123,17 +124,17 @@ class _PostViewState extends State<PostView> {
                       commentContentController: postCommentController,
                       context: context,
                       postID: post.objectId,
-                    );
+                    ); // end return
                   },
                 );
 
                 recieveComments(widget.objectID).then((value) {
                   setState(() {
                     comments = value;
-                  });
+                  }); //End recieveComments()
                 });
               },
-            ),
+            ), //End comment button
           ],
         ),
         body: Stack(
@@ -197,7 +198,7 @@ class _PostViewState extends State<PostView> {
                                                         fontSize: 25,
                                                         fontWeight:
                                                             FontWeight.w700),
-                                                  ),
+                                                  ), //End post title
                                                 ),
                                               ),
                                             ),
@@ -205,7 +206,9 @@ class _PostViewState extends State<PostView> {
                                           Padding(
                                             padding: const EdgeInsets.all(10.0),
                                             child: Text(post.content,
-                                                style: TextStyle(fontSize: 16)),
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        16)), //End post content
                                           ),
                                           Row(
                                             mainAxisAlignment:
@@ -214,8 +217,8 @@ class _PostViewState extends State<PostView> {
                                               Padding(
                                                 padding:
                                                     const EdgeInsets.all(8.0),
-                                                child: Text(
-                                                    post.created.toString()),
+                                                child: Text(post.created
+                                                    .toString()), //End post date Created
                                               ),
                                             ],
                                           ),
@@ -246,5 +249,5 @@ class _PostViewState extends State<PostView> {
             ),
           ],
         ));
-  }
-}
+  } //End Widget
+}//End class

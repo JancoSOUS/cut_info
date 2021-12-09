@@ -9,5 +9,5 @@ class Comment {
     this.created = created;
     this.userName = userName;
     this.postID = postID;
-  }
-}
+  } //end Comment
+}//end class

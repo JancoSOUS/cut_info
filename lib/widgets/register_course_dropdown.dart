@@ -5,7 +5,7 @@ String dropdownCourse = 'IT';
 
 String getDrowdownCourse() {
   return dropdownCourse;
-}
+} //End getDrowdownCourse()
 
 class RegisterCourseDropDownWidget extends StatefulWidget {
   const RegisterCourseDropDownWidget({Key? key}) : super(key: key);
@@ -13,7 +13,7 @@ class RegisterCourseDropDownWidget extends StatefulWidget {
   @override
   State<RegisterCourseDropDownWidget> createState() =>
       _DropDownStatefulWidgetState();
-}
+} //End class
 
 /// This is the private State class that goes with RegisterCourseDropDownWidget.
 class _DropDownStatefulWidgetState extends State<RegisterCourseDropDownWidget> {
@@ -56,5 +56,5 @@ class _DropDownStatefulWidgetState extends State<RegisterCourseDropDownWidget> {
         ),
       ],
     );
-  }
-}
+  } //End Widget
+}//End class

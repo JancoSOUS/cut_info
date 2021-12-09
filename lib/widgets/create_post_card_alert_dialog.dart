@@ -9,13 +9,10 @@ class CreatePostCard extends StatelessWidget {
     Key? key,
     required this.postTitleController,
     required this.postContentController,
-    //required this.context,
   }) : super(key: key);
 
   final TextEditingController postTitleController;
   final TextEditingController postContentController;
-
-  //final BuildContext context;
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +49,7 @@ class CreatePostCard extends StatelessWidget {
               ),
             ),
           )
-        ],
-        //),
+        ], //End Create Post drop down
       ),
       actions: [
         TextButton(
@@ -85,10 +81,10 @@ class CreatePostCard extends StatelessWidget {
             }
           },
         ),
-      ],
+      ], //End save & cancel buttons
     );
     return Scaffold(
         backgroundColor: Colors.lightBlue,
-        body: SingleChildScrollView(child: alertDialog));
-  }
-}
+        body: SingleChildScrollView(child: alertDialog)); // end return
+  } //End Widget
+}//End class

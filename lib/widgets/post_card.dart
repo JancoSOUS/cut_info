@@ -42,9 +42,8 @@ class PostCard extends StatelessWidget {
                     dateTime, objectId),
               ),
             ),
-          );
-          //Navigator.pushNamed(context, RouteManager.postPage);
-        },
+          ); //End navigator
+        }, //End onTap
         child: Card(
           child: ListTile(
             tileColor: Colors.lightBlue.shade400,
@@ -89,5 +88,5 @@ class PostCard extends StatelessWidget {
         ),
       ),
     );
-  }
-}
+  } //End Widget
+}//End class Postcard

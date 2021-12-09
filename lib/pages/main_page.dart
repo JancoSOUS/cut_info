@@ -15,7 +15,7 @@ class MainPage extends StatefulWidget {
 
   @override
   _MainPageState createState() => _MainPageState();
-}
+} //end MainPage
 
 class _MainPageState extends State<MainPage> {
   late TextEditingController postTitleController;
@@ -34,14 +34,14 @@ class _MainPageState extends State<MainPage> {
         posts = value;
       });
     });
-  }
+  } //end initState()
 
   @override
   void dispose() {
     postTitleController.dispose();
     postContentController.dispose();
     super.dispose();
-  }
+  } //end dispose()
 
   @override
   Widget build(BuildContext context) {
@@ -50,11 +50,6 @@ class _MainPageState extends State<MainPage> {
         automaticallyImplyLeading: false,
         title: const Text('Posts'),
         actions: <Widget>[
-          //Padding(
-          //padding: const EdgeInsets.only(right: 100),
-          //child:
-
-          //),
           Visibility(
             visible: getIsAdmin(),
             child: IconButton(
@@ -80,7 +75,7 @@ class _MainPageState extends State<MainPage> {
                   });
                 });
               },
-            ),
+            ), //end make a post button
           ), //end add post
           IconButton(
               icon: Icon(Icons.refresh),
@@ -101,7 +96,7 @@ class _MainPageState extends State<MainPage> {
               tooltip: 'Logout',
               onPressed: () {
                 logoutUserInUI(context);
-              })
+              }) //end logout button
         ],
       ),
       body: Container(
@@ -131,8 +126,8 @@ class _MainPageState extends State<MainPage> {
                             containsImage: posts[index].hasImage,
                             dateTime: posts[index].created,
                             objectId: posts[index].objectId,
-                          );
-                        }),
+                          ); //end return
+                        }), //end ListView. shortens long posts so that user must open to view full post
                   ],
                 ),
               ],
@@ -143,12 +138,12 @@ class _MainPageState extends State<MainPage> {
               builder: (context, value, child) {
                 return value.item1
                     ? AppProgressIndicator(text: '${value.item2}')
-                    : Container();
-              },
+                    : Container(); //end return
+              }, //end Builder
             ),
           ],
         ),
       ),
     );
-  }
-}
+  } //end Widget
+}//end class

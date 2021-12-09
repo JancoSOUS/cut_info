@@ -70,10 +70,11 @@ class CommentPopup extends StatelessWidget {
             }
           },
         ),
-      ],
+      ], //End save & cancel buttons
     );
     return Scaffold(
         backgroundColor: Colors.lightBlue,
-        body: Center(child: SingleChildScrollView(child: commentDialog)));
-  }
-}
+        body: Center(
+            child: SingleChildScrollView(child: commentDialog))); //End return
+  } //End Widget
+}//End class

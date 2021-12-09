@@ -5,7 +5,7 @@ String dropdownYear = '1';
 
 String getDropdownYear() {
   return dropdownYear;
-}
+} //End getDropdownYear()
 
 class RegisterYearDropDownWidget extends StatefulWidget {
   const RegisterYearDropDownWidget({Key? key}) : super(key: key);
@@ -51,5 +51,5 @@ class _DropDownStatefulWidgetState extends State<RegisterYearDropDownWidget> {
         ),
       ],
     );
-  }
-}
+  } //End Widget
+}//End class

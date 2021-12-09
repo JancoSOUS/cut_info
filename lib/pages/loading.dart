@@ -6,14 +6,14 @@ class Loading extends StatefulWidget {
 
   @override
   _LoadingState createState() => _LoadingState();
-}
+} //end class
 
 class _LoadingState extends State<Loading> {
   @override
   void initState() {
     super.initState();
     InitApp.initializeApp(context);
-  }
+  } //end initState
 
   @override
   Widget build(BuildContext context) {
@@ -55,5 +55,5 @@ class _LoadingState extends State<Loading> {
         ),
       ),
     );
-  }
-}
+  } //end Widget
+}//end class

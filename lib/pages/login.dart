@@ -19,7 +19,7 @@ class Login extends StatefulWidget {
 
   @override
   _LoginState createState() => _LoginState();
-}
+} //end class
 
 class _LoginState extends State<Login> {
   late TextEditingController emailController;
@@ -30,14 +30,14 @@ class _LoginState extends State<Login> {
     super.initState();
     emailController = TextEditingController();
     passwordController = TextEditingController();
-  }
+  } //end initState
 
   @override
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
-  }
+  } //end dispose()
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class _LoginState extends State<Login> {
                       padding: const EdgeInsets.only(top: 20),
                       child: Image(
                         image: AssetImage('assets/logo.png'),
-                      ),
+                      ), //end image asset
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 40, bottom: 30),
@@ -77,13 +77,13 @@ class _LoginState extends State<Login> {
                       controller: emailController,
                       labelText: 'Please enter email address',
                       validate: emailValidate,
-                    ),
+                    ), //end email text field
                     AppTextField(
                         hideText: true,
                         keyboardType: TextInputType.text,
                         controller: passwordController,
                         labelText: 'Please enter your password',
-                        validate: passwordlValidate),
+                        validate: passwordlValidate), //end password text field
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -101,7 +101,7 @@ class _LoginState extends State<Login> {
                               setState(() {
                                 autoLogin = value!;
                               });
-                            }),
+                            }), //end checkbox
                       ],
                     ),
                     Padding(
@@ -115,11 +115,11 @@ class _LoginState extends State<Login> {
                         setState(() {
                           if (emailController.text.isEmpty) {
                             emailValidate = true;
-                          }
+                          } //end if
                           if (passwordController.text.isEmpty) {
                             passwordlValidate = true;
-                          }
-                        });
+                          } //end if
+                        }); //end onPressed: ()
 
                         loginUserInUI(context,
                             email: emailController.text.trim(),
@@ -152,7 +152,7 @@ class _LoginState extends State<Login> {
                             .pushNamed(RouteManager.registerPage);
                       },
                       child: const Text('Sign up'),
-                    ),
+                    ), //end sign up button
                     TextButton(
                         style: TextButton.styleFrom(primary: Colors.purple),
                         onPressed: () async {
@@ -163,8 +163,8 @@ class _LoginState extends State<Login> {
                           'Reset Your Password',
                           style: TextStyle(
                               fontWeight: FontWeight.w600, fontSize: 15),
-                        ))
-                  ],
+                        )) //end text
+                  ], //end reset your password button
                 ),
               ),
             ),
@@ -174,12 +174,12 @@ class _LoginState extends State<Login> {
               builder: (context, value, child) {
                 return value.item1
                     ? AppProgressIndicator(text: '${value.item2}')
-                    : Container();
+                    : Container(); //end return
               },
             ),
           ],
         ),
       ),
     );
-  }
-}
+  } //end Widget
+}//end class

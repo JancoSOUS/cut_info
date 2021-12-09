@@ -31,5 +31,5 @@ class AppProgressIndicator extends StatelessWidget {
         ),
       ),
     );
-  }
-}
+  } //End Widget
+}//End class

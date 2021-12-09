@@ -55,7 +55,8 @@ class CommentCard extends StatelessWidget {
                                   style: GoogleFonts.openSans(
                                       textStyle: TextStyle(
                                           fontSize: 14,
-                                          fontWeight: FontWeight.w500))),
+                                          fontWeight: FontWeight
+                                              .w500))), //end comment text
                             ),
                             Padding(
                               padding: const EdgeInsets.only(
@@ -65,7 +66,7 @@ class CommentCard extends StatelessWidget {
                                 style: TextStyle(
                                     color: Colors.blue.shade900,
                                     fontWeight: FontWeight.w600),
-                              ),
+                              ), // End dateAndTime
                             )
                           ])),
                     ),
@@ -77,5 +78,5 @@ class CommentCard extends StatelessWidget {
         ),
       ),
     );
-  }
-}
+  } //End Widget
+} //End class
